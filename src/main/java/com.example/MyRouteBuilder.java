@@ -6,10 +6,11 @@ public class MyRouteBuilder extends RouteBuilder {
 
     /**
      * @author Maciej Blankenburg
-     * @version 1.0
+     *
+     * changing noop to false on messages from /data will be moved to the /data/.camel folder
      */
     public void configure() {
-        from("file:src/data?noop=false")
+        from("file:src/data?noop=true")
             .choice()
                 .when(xpath("/Order/CustomerID = 'GREAL'"))
                     .log("GREAL message")
